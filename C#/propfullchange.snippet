@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>propfullchange</Title>
+            <Author>Jakob Hendrix</Author>
+            <Description>Builds a full property with a backing field and OnPropertyChanged() after the value is is set in the setter</Description>
+			<Shortcut>chgprop</Shortcut>
+        </Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>type</ID>
+					<ToolTip>Property type</ToolTip>
+					<Default>int</Default>
+				</Literal>
+				<Literal>
+					<ID>property</ID>
+					<ToolTip>Property name</ToolTip>
+					<Default>MyProperty</Default>
+				</Literal>
+				<Literal>
+					<ID>field</ID>
+					<ToolTip>The variable backing this property</ToolTip>
+					<Default>_myVar</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+    <![CDATA[private $type$ $field$;
+
+    public $type$ $property$
+    {
+        get => $field$;
+        set 
+        { 
+            $field$ = value;
+            OnPropertyChanged(nameof($property$));
+        }
+    }
+    $end$]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
